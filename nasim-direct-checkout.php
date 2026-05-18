@@ -4,6 +4,7 @@
  * Description: কাস্টম Elementor Buy Button যা প্রোডাক্ট কার্টে অ্যাড করে সরাসরি WooCommerce Checkout-এ নিয়ে যায়।
  * Plugin URI: https://nasimwebpro.com
  * Author: A.S.M Nasim
+ * Author URI: https://nasimwebpro.com
  * Version: 1.0.1
  */
 
