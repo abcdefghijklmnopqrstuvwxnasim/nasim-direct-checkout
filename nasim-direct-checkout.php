@@ -1,11 +1,10 @@
 <?php
 /**
  * Plugin Name: Nasim Direct Checkout Button for Elementor
- * Description: কাস্টম Elementor Buy Button যা প্রোডাক্ট কার্টে অ্যাড করে সরাসরি WooCommerce Checkout-এ নিয়ে যায়।
+ * Description: কাস্টম Elementor Buy Button যা প্রোডাক্ট কার্টে অ্যাড করে সরাসরি WooCommerce Checkout-এ নিয়ে যায়।
  * Plugin URI: https://nasimwebpro.com
- * Author: Bee IT Agency
- * Author URI: https://beeitagency.com
- * Version: 1.0.2
+ * Author: A.S.M Nasim
+ * Version: 1.0.1
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -28,21 +27,26 @@ final class Nasim_Direct_Checkout_Extension {
     }
 }
 
-// Include the Plugin Update Checker library
-require 'plugin-update-checker/plugin-update-checker.php';
-use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
+// Include the Plugin Update Checker library safely
+$puc_path = __DIR__ . '/plugin-update-checker/plugin-update-checker.php';
 
-$myUpdateChecker = PucFactory::buildUpdateChecker(
-    'https://github.com/abcdefghijklmnopqrstuvwxnasim/nasim-direct-checkout', // আপনার গিটহাব রিপোজিটরির লিংক
-    __FILE__,
-    'nasim-direct-checkout'
-);
+if ( file_exists( $puc_path ) ) {
+    require_once $puc_path;
+    
+    use YahnisElsts\PluginUpdateChecker\v5\PucFactory;
 
-// Set the branch that contains the stable release. (Optional)
-$myUpdateChecker->setBranch('main');
+    $myUpdateChecker = PucFactory::buildUpdateChecker(
+        'https://github.com/abcdefghijklmnopqrstuvwxnasim/nasim-direct-checkout', // আপনার গিটহাব রিপোজিটরির লিংক
+        __FILE__,
+        'nasim-direct-checkout'
+    );
 
-// Optional: If you're using a private repository, specify the access token like this:
-// $myUpdateChecker->setAuthentication('আপনার-গিটহাব-পার্সোনাল-অ্যাক্সেস-টোকেন');
+    // Set the branch that contains the stable release. (Optional)
+    $myUpdateChecker->setBranch('main');
+
+    // Optional: If you're using a private repository, specify the access token like this:
+    // $myUpdateChecker->setAuthentication('আপনার-গিটহাব-পার্সোনাল-অ্যাক্সেস-টোকেন');
+}
 
 // Instantiate Plugin Class
 new Nasim_Direct_Checkout_Extension();
